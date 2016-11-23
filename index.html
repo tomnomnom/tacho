@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Tacho Tuesday</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      body {
+        background-color: #323232;
+      }
+      section {
+        text-align: center;
+      }
+      canvas {
+        padding: 1em;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="main">
+      <canvas id="demo" width="400" height="400" data-val="0">No canvas</canvas>
+    </section>
+
+    <div style="text-align: center;">
+        <input type="range" id="demoInput" min="0" max="100" value="0">
+    </div>
+
+    <script src="/tacho.js"></script>
+    <script>
+      window.onload = function(){
+        var demo = document.getElementById('demo');
+        tacho(demo, {
+          "title": "Widgets Per Second", 
+          "max": 100,
+          "markInterval": 2,
+          "bigMarkInterval": 10,
+          "redLinePoint": 0.85,
+          "autoScale": false
+        });
+
+        var demoInput = document.getElementById('demoInput');
+        demoInput.onchange = function(e){
+            console.log(this.value);
+            demo.setAttribute('data-val', this.value);
+        };
+      };
+    </script>
+    
+  </body>
+</html>
